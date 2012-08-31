@@ -10,7 +10,7 @@ public class SynergyAdmin extends JavaPlugin
 	 @Override
 	 public void onEnable()
 	 {
-		 getLogger().info("SynergyAdmin Enabled!");
+		 getLogger().info("SynergyAdmin Enabled! ");
 	     getServer().getPluginManager().registerEvents(new EventsHandler(this), this);
 	 }
 	 
