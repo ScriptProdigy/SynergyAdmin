@@ -2,6 +2,7 @@ package synergy.admin;
 
 import java.util.logging.Level;
 
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
@@ -16,20 +17,32 @@ public class EventsHandler implements Listener
 	@EventHandler
 	public void onPlayerCommandPreprocessEvent(PlayerCommandPreprocessEvent evt)
 	{
+		// This is where I do all of the logging for the commands and such.
+		
+		Player player = evt.getPlayer();
+		
 		String command = evt.getMessage().split(" ")[0];
-		plugin.getLogger().log(Level.INFO, "SYA (evt-cmd): " + command);
 		
 		if(command.equalsIgnoreCase("/ban"))
 		{
-			plugin.getLogger().log(Level.INFO, "SYA (evt-ban): " + evt.getMessage());
+			if(player.hasPermission("bukkit.command.ban.player"))
+			{
+				plugin.getLogger().log(Level.INFO, "(evt-ban-perms): " + evt.getMessage());
+			}
 		} 
 		else if(command.equalsIgnoreCase("/kick"))
 		{
-			plugin.getLogger().log(Level.INFO, "SYA (evt-kick): " + evt.getMessage());
+			if(player.hasPermission("bukkit.command.kick"))
+			{
+				plugin.getLogger().log(Level.INFO, "(evt-kick-perms): " + evt.getMessage());
+			}
 		}
 		else if(command.equalsIgnoreCase("/warn"))
 		{
-			plugin.getLogger().log(Level.INFO, "SYA (evt-warn): " + evt.getMessage());
+			if(player.hasPermission("warn"))
+			{
+				plugin.getLogger().log(Level.INFO, "(evt-kick-perms): " + evt.getMessage());
+			}
 		}
 	}
 }
