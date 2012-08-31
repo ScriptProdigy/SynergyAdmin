@@ -1,0 +1,15 @@
+name: Synergy Admin
+main: synergy.admin.SynergyAdmin
+version: 0.2.1
+
+commands:
+   ban:
+      description: Ban users.
+      usage: /ban [player] [reason]
+   kick:
+      description: Kick users.
+      usage: /kick [player] [reason]
+   warn:
+      description: Warn users.
+      usage: /warn [player] [reason]
+      
